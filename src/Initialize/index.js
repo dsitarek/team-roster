@@ -35,7 +35,7 @@ function Initialize() {
           <AppNavbar user={user} />
           <Router players={players} setPlayers={setPlayers} playerObj={editItem} setEditItem={setEditItem} uid={user.uid} />
         </>
-      ) : (<SignIn />)}
+      ) : (<SignIn user={user} />)}
     </div>
   );
 }
