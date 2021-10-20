@@ -10,9 +10,9 @@ export default function Router({
   return (
     <Switch>
       <Route exact path="/">
-        <Roster players={players} />
+        <Roster players={players} setEditItem={setEditItem} setPlayers={setPlayers} />
       </Route>
-      <Route path="/addPlayer">
+      <Route path="/playerForm">
         <CreatePlayer player={playerObj} setPlayers={setPlayers} setEditItem={setEditItem} uid={uid} />
       </Route>
     </Switch>
