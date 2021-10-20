@@ -1,6 +1,6 @@
 # Hockey Roster [![Netlify Status](https://api.netlify.com/api/v1/badges/1a52e6d7-b7e9-4539-ba6f-8ba57c467987/deploy-status)](https://app.netlify.com/sites/djs-hockey-roster/deploys)
 
-[Deployed Site](djs-hockey-roster.netlify.app)
+[Deployed Site](https://djs-hockey-roster.netlify.app/)
 
 ## Features
 - Login to your user specific roster
