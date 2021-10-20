@@ -1,4 +1,4 @@
-# Team Roster
+# Team Roster [![Netlify Status](https://api.netlify.com/api/v1/badges/1a52e6d7-b7e9-4539-ba6f-8ba57c467987/deploy-status)](https://app.netlify.com/sites/djs-hockey-roster/deploys)
 For this project you will be building a team roster for a sports team.  Pick any team sport you want.  Theme your project based on the sport.
 
 ## Requirements
