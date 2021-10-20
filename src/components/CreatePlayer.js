@@ -6,10 +6,9 @@ const initialState = {
   name: '',
   position: '',
   imageURL: '',
-  uid: '',
 };
 
-export default function CreatePlayer({ player, setPlayers }) {
+export default function CreatePlayer({ player, setPlayers, uid }) {
   const [formInput, setFormInput] = useState(initialState);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function CreatePlayer({ player, setPlayers }) {
         resetForm();
       });
     } else {
-      createPlayer(formInput).then((players) => {
+      createPlayer({ ...formInput, uid }).then((players) => {
         setPlayers(players);
         resetForm();
       });
@@ -57,8 +56,8 @@ export default function CreatePlayer({ player, setPlayers }) {
           <input type="text" id="ImageURL" name="imageURL" value={formInput.imageURL} onChange={handleChange} required />
         </label>
         <label>Position:
-          <select className="form-select" aria-label="Default select example" id="position" name="position" value={formInput.position} onChange={handleChange} required>
-            <option selected value={formInput.position || ''}>{formInput.position || 'Select Position'}</option>
+          <select className="form-select" aria-label="Default select example" id="position" name="position" value={formInput.position || ''} onChange={handleChange} required>
+            <option value="">Select Position</option>
             <option value="Center">Center</option>
             <option value="Left Wing">Left Wing</option>
             <option value="Right Wing">Right Wing</option>
@@ -83,4 +82,5 @@ CreatePlayer.propTypes = {
     uid: PropTypes.string,
   }),
   setPlayers: PropTypes.func.isRequired,
+  uid: PropTypes.string.isRequired,
 };
