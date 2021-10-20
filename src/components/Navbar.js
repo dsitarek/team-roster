@@ -22,8 +22,8 @@ const AppNavbar = ({ user }) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Predators Roster</NavbarBrand>
+      <Navbar light expand="md" className="navbar">
+        <NavbarBrand href="/">Hockey Rosters</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -31,7 +31,7 @@ const AppNavbar = ({ user }) => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/addPlayer">Add Player to Roster</NavLink>
+              <NavLink href="/playerForm">Add Player to Roster</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

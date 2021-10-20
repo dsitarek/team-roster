@@ -2,7 +2,7 @@
 @import 'globals';
 
 body {
-  background-color: $favColor !important;
+  background-image: url(../assets/ice_bg.jpg);
 }
 
 .player-form {
@@ -10,4 +10,55 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 1em .5em 0 .5em;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 .5em 0 .5em;
+  padding: .5em;
+  box-shadow: 1px 1px 5px black;
+}
+
+.player-card button {
+  margin: 0 .5em 0 .5em;
+}
+
+.navbar {
+  background-color: rgba(59, 59, 59, 0.185);
+}
+
+.roster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../assets/loginImg.png);
+  width: 50em;
+  height: 45em;
+}
+
+.login-btn {
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-color: transparent;
 }

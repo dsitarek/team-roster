@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import SignIn from '../views/SignIn';
 import 'firebase/auth';
-import { getPlayers } from '../api/data/playerData';
+import { getPlayers } from '../data/playerData';
 import Router from '../routes';
 import AppNavbar from '../components/Navbar';
 

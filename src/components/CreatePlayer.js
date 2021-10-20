@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { createPlayer, updatePlayer } from '../api/data/playerData';
+import { createPlayer, updatePlayer } from '../data/playerData';
 
 const initialState = {
   name: '',
@@ -8,7 +8,9 @@ const initialState = {
   imageURL: '',
 };
 
-export default function CreatePlayer({ player, setPlayers, uid }) {
+export default function CreatePlayer({
+  player, setPlayers, uid, setEditItem,
+}) {
   const [formInput, setFormInput] = useState(initialState);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ export default function CreatePlayer({ player, setPlayers, uid }) {
 
   const resetForm = () => {
     setFormInput(initialState);
+    setEditItem(initialState);
   };
 
   const handleSubmit = (e) => {
@@ -83,4 +86,5 @@ CreatePlayer.propTypes = {
   }),
   setPlayers: PropTypes.func.isRequired,
   uid: PropTypes.string.isRequired,
+  setEditItem: PropTypes.func.isRequired,
 };
