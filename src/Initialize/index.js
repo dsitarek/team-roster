@@ -33,7 +33,7 @@ function Initialize() {
       {user ? (
         <>
           <AppNavbar user={user} />
-          <Router players={players} setPlayers={setPlayers} playerObj={editItem} setEditItem={setEditItem} />
+          <Router players={players} setPlayers={setPlayers} playerObj={editItem} setEditItem={setEditItem} uid={user.uid} />
         </>
       ) : (<SignIn />)}
     </div>

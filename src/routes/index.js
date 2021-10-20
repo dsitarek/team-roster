@@ -5,7 +5,7 @@ import Roster from '../components/Roster';
 import CreatePlayer from '../components/CreatePlayer';
 
 export default function Router({
-  players, setPlayers, playerObj, setEditItem,
+  players, setPlayers, playerObj, setEditItem, uid,
 }) {
   return (
     <Switch>
@@ -13,7 +13,7 @@ export default function Router({
         <Roster players={players} />
       </Route>
       <Route path="/addPlayer">
-        <CreatePlayer player={playerObj} setPlayers={setPlayers} setEditItem={setEditItem} />
+        <CreatePlayer player={playerObj} setPlayers={setPlayers} setEditItem={setEditItem} uid={uid} />
       </Route>
     </Switch>
   );
@@ -30,4 +30,5 @@ Router.propTypes = {
     imageURL: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,
+  uid: PropTypes.string.isRequired,
 };
