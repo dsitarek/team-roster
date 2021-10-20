@@ -4,3 +4,10 @@
 body {
   background-color: $favColor !important;
 }
+
+.player-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
