@@ -3,8 +3,8 @@ import firebaseConfig from '../apiKeys';
 
 const fbUrl = firebaseConfig.databaseURL;
 
-const getPlayers = async () => {
-  const players = await axios.get(`${fbUrl}/players.json`);
+const getPlayers = async (uid) => {
+  const players = await axios.get(`${fbUrl}/players.json?orderBy="uid"&equalTo="${uid}"`);
   const playerData = Object.values(players.data);
   return playerData;
 };
@@ -14,20 +14,20 @@ const createPlayer = (playerObj) => new Promise((resolve, reject) => {
     const fbKey = { firebaseKey: obj.data.name };
     axios.patch(`${fbUrl}/players/${obj.data.name}.json`, fbKey)
       .then(() => {
-        getPlayers().then(resolve);
+        getPlayers(playerObj.uid).then(resolve);
       });
   }).catch(reject);
 });
 
-const deletePlayer = (fbKey) => new Promise((resolve, reject) => {
+const deletePlayer = (fbKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${fbUrl}/players/${fbKey}.json`)
-    .then(() => getPlayers().then(resolve))
+    .then(() => getPlayers(uid).then(resolve))
     .catch(reject);
 });
 
 const updatePlayer = (fbKey, updateObj) => new Promise((resolve, reject) => {
   axios.patch(`${fbUrl}/players/${fbKey}.json`, updateObj)
-    .then(() => getPlayers().then(resolve))
+    .then(() => getPlayers(updateObj.uid).then(resolve))
     .catch(reject);
 });
 
