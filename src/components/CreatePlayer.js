@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { createPlayer, updatePlayer } from '../data/playerData';
 import { getTeams, getRoster } from '../data/nhlData';
 
+const playerImgURL = 'https://nhl.bamcontent.com/images/headshots/current/168x168';
+
 const initialState = {
   name: '',
   position: '',
   imageURL: '',
+  playerId: '',
+  team: '',
 };
 
 export default function CreatePlayer({
@@ -15,6 +19,7 @@ export default function CreatePlayer({
   const [formInput, setFormInput] = useState(initialState);
   const [teams, setTeams] = useState([]);
   const [playerInput, setPlayerInput] = useState('');
+  const [submitted, setSubmitted] = useState('');
 
   useEffect(() => {
     getTeams().then((data) => setTeams(data));
@@ -34,9 +39,16 @@ export default function CreatePlayer({
   }, [player]);
 
   useEffect(async () => {
+    let people = [];
     if (formInput.team) {
-      const people = await getRoster(formInput.team);
+      people = await getRoster(formInput.team);
       setPlayerInput(people);
+    }
+    if (formInput.name) {
+      const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1]));
+      setFormInput((prevState) => ({
+        ...prevState, position: playerInfo.position, playerNumber: playerInfo.playerNumber, playerId: playerInfo.id,
+      }));
     }
   }, [formInput]);
 
@@ -49,6 +61,11 @@ export default function CreatePlayer({
     setEditItem(initialState);
   };
 
+  const handleSubmitMessage = () => {
+    setSubmitted(player.firebaseKey ? 'Player added to roster!' : 'Player Updated!');
+    setTimeout(() => (setSubmitted('')), 1500);
+  };
+
   const handleSubmit = (e) => {
     const objFbKey = (player.firebaseKey || '');
     const personId = (formInput.name).split('-')[1];
@@ -56,7 +73,7 @@ export default function CreatePlayer({
       name: (formInput.name).split('-')[0],
       firebaseKey: objFbKey,
       position: formInput.position,
-      imageURL: `https://nhl.bamcontent.com/images/headshots/current/168x168/${personId}.jpg`,
+      imageURL: `${playerImgURL}/${personId}.jpg`,
       uid,
       personId,
       team: formInput.team,
@@ -73,34 +90,36 @@ export default function CreatePlayer({
         resetForm();
       });
     }
+    handleSubmitMessage();
   };
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="player-form">
-        <label>Team:
-          <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} required>
-            <option value="">Select Team</option>
-            {teams.map((team) => <option key={`team-${team.id}`} value={team.id || ''}>{team.name}</option>)}
-          </select>
-        </label>
-        <label>Player Name:
-          <select className="form-select" aria-label="Default select example" id="name" name="name" value={formInput.name} onChange={handleChange} disabled={!formInput.team} required>
-            <option value="">Select Player</option>
-            {playerInput ? playerInput.map((person) => <option key={`player-${person.id}`} value={`${person.name}-${person.id}` || ''}>{person.name}</option>) : ''}
-          </select>
-        </label>
-        <label>Position:
-          <select className="form-select" aria-label="Default select example" id="position" name="position" value={formInput.position || ''} onChange={handleChange} required>
-            <option value="">Select Position</option>
-            <option value="Center">Center</option>
-            <option value="Left Wing">Left Wing</option>
-            <option value="Right Wing">Right Wing</option>
-            <option value="Defenseman">Defenseman</option>
-            <option value="Goaltender">Goaltender</option>
-          </select>
-        </label>
-        <button type="submit" className="btn btn-success">{player.firebaseKey ? 'Update' : 'Submit'}</button>
+        <div className="form-body">
+          <div className="form-input-container">
+            <span className="form-message">{submitted}</span>
+            <label>Team:
+              <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} required>
+                <option value="">Select Team</option>
+                {teams.map((team) => <option key={`team-${team.id}`} value={team.id || ''}>{team.name}</option>)}
+              </select>
+            </label>
+            <label>Player Name:
+              <select className="form-select" aria-label="Default select example" id="name" name="name" value={formInput.name} onChange={handleChange} disabled={!formInput.team} required>
+                <option value="">Select Player</option>
+                {playerInput ? playerInput.map((person) => <option key={`player-${person.id}`} value={`${person.name}-${person.id}` || ''}>{person.name}</option>) : ''}
+              </select>
+            </label>
+            <button type="submit" className="btn btn-success">{player.firebaseKey ? 'Update' : 'Submit'}</button>
+          </div>
+          {formInput.playerId ? (
+            <div className="player-form-info-container">
+              <img src={`${playerImgURL}/${formInput.playerId}.jpg`} alt="player" />
+              <h6>Position: {formInput.position} <br /> Player Number: {formInput.playerNumber}</h6>
+            </div>
+          ) : ''}
+        </div>
       </form>
     </div>
   );

@@ -1,8 +1,16 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import 'globals';
+@import url('http://fonts.cdnfonts.com/css/bauer');
 
 body {
   background-image: url(../assets/ice_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
 }
 
 .player-form {
@@ -10,30 +18,140 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid #a5aebd44;
+  border-radius: 5px;
+  background-image: linear-gradient(#a5aebd88, #d2ddef86);
+  width: 50%;
+  min-height: 18em;
+  margin-top: 5em;
+  padding: 1em;
+}
+
+.form-message {
+  position: absolute;
+  margin-top: -1.5em;
+  margin-left: 3em;
+  color: green;
+  text-shadow: 1px 1px 1px lightgreen;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-container button {
+  margin-top: .5em;
+}
+
+.player-form-info-container {
+  border: 1px solid #a5aebd44;
+  border-radius: 5px;
+  background-color: rgba(150, 148, 148, 0.507);
+  padding: .5em;
+}
+
+.player-form-info-container h6 {
+  margin-top: .25em;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-body {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  
 }
 
 .card-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 1em .5em 0 .5em;
+  width: 100%;
 }
 
 .player-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  align-items: center;
+  border: 1px solid #a5aebd44;
   border-radius: 5px;
-  margin: 0 .5em 0 .5em;
-  padding: .5em;
+  background-image: linear-gradient(#a5aebd88, #d2ddef86);
+  padding: .5em 0 .5em 0;
   box-shadow: 1px 1px 5px black;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.player-card img {
+  border: 1px transparent;
+  border-radius: 3px;
+}
+
+.player-card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #a5aebd44;
+  border-radius: 5px;
+  background-image: linear-gradient(#a5aebd88, #d2ddef86);
+  padding: .5em 0 .5em 0;
+  box-shadow: 1px 1px 5px black;
+  text-align: center;
+  height: 100%;
+}
+
+.player-stats-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  margin-top: 2em;
+}
+
+.stats-text {
+  font-weight: bold;
+}
+
+.flip {
+  width: 2.4em;
+  margin: 1.4em 0 0 13em;
+  overflow: hidden;
 }
 
 .player-card button {
-  margin: 0 .5em 0 .5em;
+  margin: .5em .5em 0 .5em;
+}
+
+.site-logo {
+  width: 7.5em;
+  margin: -5em -1em -5em 0;
 }
 
 .navbar {
-  background-color: rgba(59, 59, 59, 0.185);
+  background-color: #a5aebd88;
+  font-family: 'Bauer';
+  color: black;
+}
+
+.navlink {
+  color: black;
+}
+
+.nav-item {
+  margin-left: 1em;
 }
 
 .roster {
@@ -61,4 +179,71 @@ body {
   border-radius: 5px;
   border: 1px solid transparent;
   background-color: transparent;
+}
+
+.user-drop {
+  margin-left: auto;
+  margin-right: 1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+
+.user-img {
+  width: 2em;
+  margin: -1em .5em -1em 0;
+  border: 1px transparent;
+  border-radius: 100px;
+}
+
+.dropdown-menu.show {
+  margin-left: 3em;
+  background-color: #a5aebd88;
+  margin-top: .5em;
+}
+
+.dropdown-menu.show .nav-link {
+  color: black;
+  height: 1.5em;
+  text-align: center;
+  margin-top: -1em;
+}
+
+.flip-card {
+  background-color: transparent;
+  height: 22em;
+  width: 15em;
+  margin: .5em;
+  perspective: 1100px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:active .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+.player-card, .player-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: .5em;
+}
+
+.player-card-back {
+  transform: rotateY(180deg);
 }

@@ -15,12 +15,18 @@ const getTeams = async () => {
 const getRoster = async (teamId) => {
   const playerArr = [];
   const team = await axios.get(`${nhlApi}/teams/${teamId}/roster`);
-  console.log(team);
   team.data.roster.map((player) => playerArr.push({
     name: player.person.fullName,
     id: player.person.id,
+    position: player.position.name,
+    playerNumber: player.jerseyNumber,
   }));
   return playerArr;
 };
 
-export { getTeams, getRoster };
+const getStats = async (playerId) => {
+  const stats = await axios.get(`${nhlApi}/people/${playerId}`);
+  return (stats.data.people)[0];
+};
+
+export { getTeams, getRoster, getStats };
