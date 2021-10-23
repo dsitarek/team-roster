@@ -59,7 +59,7 @@ export default function Player({ player, setEditItem, setPlayers }) {
             <li><span className="stats-text">#{stats.primaryNumber}</span></li>
             <li><span className="stats-text">Name:</span> {stats.fullName}</li>
             <li><span className="stats-text">Birthdate:</span> {new Date(stats.birthDate).toLocaleDateString('en-US')}</li>
-            <li><span className="stats-text">Origin:</span> {stats.birthCity}, {stats.birthStateProvince}, {stats.birthCountry}</li>
+            <li><span className="stats-text">Origin:</span> {stats.birthCity}, {stats.birthStateProvince}{stats.birthStateProvince ? ', ' : ''}{stats.birthCountry}</li>
             <li><span className="stats-text">Height:</span> {stats.height}</li>
             <li><span className="stats-text">Weight:</span> {stats.weight}lbs</li>
             <li><span className="stats-text">Active:</span> {stats.active ? 'Yes' : 'No'}</li>
