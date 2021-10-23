@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { signOutUser } from '../api/auth';
+import siteLogo from '../assets/siteLogo.png';
 
 const AppNavbar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,21 +24,21 @@ const AppNavbar = ({ user }) => {
   return (
     <div>
       <Navbar light expand="md" className="navbar">
-        <NavbarBrand href="/">Hockey Rosters</NavbarBrand>
+        <NavbarBrand href="/"><img className="site-logo" src={siteLogo} alt="site logo" /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="container-fluid" navbar>
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="nav-item">
               <NavLink href="/playerForm">Add Player to Roster</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown nav inNavbar className="user-drop">
               <DropdownToggle nav caret>
-                {user.user}
+                <img className="user-img" src={user.profileImage} alt="user" />{user.user}
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu>
                 <DropdownItem>
                   <NavLink onClick={signOutUser}>Sign Out</NavLink>
                 </DropdownItem>
