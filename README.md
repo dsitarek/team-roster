@@ -14,51 +14,18 @@
 
 ## Code Snippet
 ```
-  useEffect(async () => {
+ useEffect(async () => {
     let people = [];
     if (formInput.team) {
       people = await getRoster(formInput.team);
       setPlayerInput(people);
-    }
-    if (formInput.name) {
-      const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1]));
+    } if (formInput.name && formInput.team) {
+      const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1])) || initialState;
       setFormInput((prevState) => ({
         ...prevState, position: playerInfo.position, playerNumber: playerInfo.playerNumber, playerId: playerInfo.id,
       }));
     }
   }, [formInput]);
-  
-   const handleSubmitMessage = () => {
-    setSubmitted(player.firebaseKey ? 'Player added to roster!' : 'Player Updated!');
-    setTimeout(() => (setSubmitted('')), 1500);
-  };
-
-  const handleSubmit = (e) => {
-    const objFbKey = (player.firebaseKey || '');
-    const personId = (formInput.name).split('-')[1];
-    const fbObj = {
-      name: (formInput.name).split('-')[0],
-      firebaseKey: objFbKey,
-      position: formInput.position,
-      imageURL: `${playerImgURL}/${personId}.jpg`,
-      uid,
-      personId,
-      team: formInput.team,
-    };
-    e.preventDefault();
-    if (player.firebaseKey) {
-      updatePlayer(player.firebaseKey, fbObj).then((players) => {
-        setPlayers(players);
-        resetForm();
-      });
-    } else {
-      createPlayer(fbObj).then((players) => {
-        setPlayers(players);
-        resetForm();
-      });
-    }
-    handleSubmitMessage();
-  };
   ```
 
 ## Images
