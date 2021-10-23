@@ -38,14 +38,18 @@ export default function CreatePlayer({
     }
   }, [player]);
 
+  const resetForm = () => {
+    setFormInput(initialState);
+    setEditItem(initialState);
+  };
+
   useEffect(async () => {
     let people = [];
     if (formInput.team) {
       people = await getRoster(formInput.team);
       setPlayerInput(people);
-    }
-    if (formInput.name) {
-      const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1]));
+    } if (formInput.name) {
+      const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1])) || initialState;
       setFormInput((prevState) => ({
         ...prevState, position: playerInfo.position, playerNumber: playerInfo.playerNumber, playerId: playerInfo.id,
       }));
@@ -54,11 +58,6 @@ export default function CreatePlayer({
 
   const handleChange = (e) => {
     setFormInput((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
-  };
-
-  const resetForm = () => {
-    setFormInput(initialState);
-    setEditItem(initialState);
   };
 
   const handleSubmitMessage = () => {
@@ -100,7 +99,7 @@ export default function CreatePlayer({
           <div className="form-input-container">
             <span className="form-message">{submitted}</span>
             <label>Team:
-              <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} disabled={player.firebaseKey} required>
+              <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} required>
                 <option value="">Select Team</option>
                 {teams.map((team) => <option key={`team-${team.id}`} value={team.id || ''}>{team.name}</option>)}
               </select>
