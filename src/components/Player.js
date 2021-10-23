@@ -32,7 +32,7 @@ export default function Player({ player, setEditItem, setPlayers }) {
 
   const handleUpdate = () => {
     setEditItem(player);
-    history.push('/playerForm');
+    history.push('/new');
   };
 
   const handleDelete = () => {

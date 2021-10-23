@@ -9,11 +9,11 @@ export default function Router({
 }) {
   return (
     <Switch>
-      <Route exact path="/">
-        <Roster players={players} setEditItem={setEditItem} setPlayers={setPlayers} />
-      </Route>
-      <Route path="/playerForm">
+      <Route exact path="/new">
         <CreatePlayer player={playerObj} setPlayers={setPlayers} setEditItem={setEditItem} uid={uid} />
+      </Route>
+      <Route path="/">
+        <Roster players={players} setEditItem={setEditItem} setPlayers={setPlayers} />
       </Route>
     </Switch>
   );

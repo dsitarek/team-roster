@@ -29,10 +29,10 @@ const AppNavbar = ({ user }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="container-fluid" navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink href="/team">Team</NavLink>
             </NavItem>
             <NavItem className="nav-item">
-              <NavLink href="/playerForm">Add Player to Roster</NavLink>
+              <NavLink href="/new">Add Player to Roster</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar className="user-drop">
               <DropdownToggle nav caret>
