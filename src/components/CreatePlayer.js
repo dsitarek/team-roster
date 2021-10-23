@@ -62,7 +62,7 @@ export default function CreatePlayer({
   };
 
   const handleSubmitMessage = () => {
-    setSubmitted(player.firebaseKey ? 'Player added to roster!' : 'Player Updated!');
+    setSubmitted(player.firebaseKey ? 'Player Updated!' : 'Player added to roster!');
     setTimeout(() => (setSubmitted('')), 1500);
   };
 
