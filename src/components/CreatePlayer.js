@@ -48,7 +48,7 @@ export default function CreatePlayer({
     if (formInput.team) {
       people = await getRoster(formInput.team);
       setPlayerInput(people);
-    } if (formInput.name) {
+    } if (formInput.name && formInput.team) {
       const playerInfo = people.find((playerObj) => (playerObj.id).toString() === ((formInput.name).split('-')[1])) || initialState;
       setFormInput((prevState) => ({
         ...prevState, position: playerInfo.position, playerNumber: playerInfo.playerNumber, playerId: playerInfo.id,
