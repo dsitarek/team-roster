@@ -10,7 +10,7 @@
 - Delete players from your roster by clicking "Delete" on that player
 
 ## Technical Flowchart
-![Flowchart](https://user-images.githubusercontent.com/82732748/138541589-c5832d2b-e356-494b-a29e-b83f99390a63.jpg)
+![Flowchart (2)](https://user-images.githubusercontent.com/82732748/138542052-d6d76b71-d87d-451f-8ec4-c55303caa8a6.jpg)
 
 ## Code Snippet
 ```
