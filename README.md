@@ -66,6 +66,9 @@
 
 ![teamrosterwf2](https://user-images.githubusercontent.com/82732748/138539142-b851e1cc-b595-45e7-97c2-42b430381b86.png)
 
+## Project Board
+[Project Board](https://github.com/dsitarek/team-roster/projects/1)
+
 ## Contributors
 [Daniel Sitarek](https://github.com/dsitarek)
 
