@@ -94,6 +94,7 @@ export default function CreatePlayer({
 
   return (
     <div className="form-container">
+      <h1>{player.firebaseKey ? 'Update Player' : 'Add Player'}</h1>
       <form onSubmit={handleSubmit} className="player-form">
         <div className="form-body">
           <div className="form-input-container">
