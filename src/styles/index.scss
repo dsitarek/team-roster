@@ -1,6 +1,5 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import 'globals';
-@import url('http://fonts.cdnfonts.com/css/bauer');
 
 body {
   background-image: url(../assets/ice_bg.jpg);
@@ -142,8 +141,8 @@ body {
 
 .navbar {
   background-color: #a5aebd88;
-  font-family: 'Bauer';
   color: black;
+  font-family: 'Bauer';
 }
 
 .navlink {
