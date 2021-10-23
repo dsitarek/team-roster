@@ -100,13 +100,13 @@ export default function CreatePlayer({
           <div className="form-input-container">
             <span className="form-message">{submitted}</span>
             <label>Team:
-              <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} required>
+              <select className="form-select" aria-label="Default select example" id="team" name="team" value={formInput.team} onChange={handleChange} disabled={player.firebaseKey} required>
                 <option value="">Select Team</option>
                 {teams.map((team) => <option key={`team-${team.id}`} value={team.id || ''}>{team.name}</option>)}
               </select>
             </label>
             <label>Player Name:
-              <select className="form-select" aria-label="Default select example" id="name" name="name" value={formInput.name} onChange={handleChange} disabled={!formInput.team} required>
+              <select className="form-select" aria-label="Default select example" id="name" name="name" value={formInput.name || ''} onChange={handleChange} disabled={!formInput.team} required>
                 <option value="">Select Player</option>
                 {playerInput ? playerInput.map((person) => <option key={`player-${person.id}`} value={`${person.name}-${person.id}` || ''}>{person.name}</option>) : ''}
               </select>
