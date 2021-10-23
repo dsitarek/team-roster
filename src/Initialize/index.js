@@ -5,7 +5,6 @@ import 'firebase/auth';
 import { getPlayers } from '../data/playerData';
 import Router from '../routes';
 import AppNavbar from '../components/Navbar';
-import '../assets/fonts/BAUER.TTF';
 
 function Initialize() {
   const [user, setUser] = useState(null);
