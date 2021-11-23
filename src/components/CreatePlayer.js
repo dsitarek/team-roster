@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createPlayer, updatePlayer } from '../data/playerData';
 import { getTeams, getRoster } from '../data/nhlData';
 
-const playerImgURL = 'https://nhl.bamcontent.com/images/headshots/current/168x168';
+const playerImgURL = 'http://nhl.bamcontent.com/images/headshots/current/168x168';
 
 const initialState = {
   name: '',
